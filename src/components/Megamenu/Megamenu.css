@@ -1,0 +1,35 @@
+/* Add these styles to your CSS (or in your existing styles) */
+.mega-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 300px; /* Adjust the width as needed */
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    height: 120px; /* Adjust the height to fit 2 rows */
+    overflow-y: auto; /* Add scrollbar if needed */
+  }
+  
+  .mega-menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px; /* Adjust the gap between columns as needed */
+    padding: 15px; /* Adjust the padding inside the mega-menu */
+  }
+  
+  .mega-menu-column {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .mega-menu a {
+    text-decoration: none;
+    color: #333;
+    margin-bottom: 10px; /* Adjust the margin between links as needed */
+  }
+  
+  .mega-menu a:hover {
+    color: #f00; /* Adjust the hover color as needed */
+  }
+  
