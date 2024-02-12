@@ -8,7 +8,7 @@ import { MdOutlineRestaurantMenu } from "react-icons/md"
 import images from "../../constants/images";
 // import ReactCardFlip from 'react-card-flip';
 import { Link } from 'react-router-dom';
-import Megamenu from "../Megamenu/Megamenu";
+// import Megamenu from "../Megamenu/Megamenu";
 
 
 const Navbar = () => {
@@ -38,7 +38,7 @@ const Navbar = () => {
         </Link>
         <Link to='/shef'>
         <li className="p__opensans"><a href="#contact">Chef-At-Home</a></li>
-        <Megamenu />
+        
         </Link>
       </ul>
 

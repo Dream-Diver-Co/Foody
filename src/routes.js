@@ -5,8 +5,8 @@ import App from "./App";
 import About from "./pages/about";
 import Shef from "./pages/shef";
 import Feature from "./components/Feature/Feature";
-import Foodmenu from "./components/Foodmenu/Foodmenu";
 import Subacriptions from "./components/Subscription/Subacriptions";
+import Menu from "./components/Menu/Menu";
 
 
 const router = createBrowserRouter([
@@ -27,8 +27,8 @@ const router = createBrowserRouter([
         element: <Feature />,
     },
     {
-        path: "Foodmenu",
-        element: <Foodmenu />,
+        path: "Menu",
+        element: <Menu />,
     },
     {
         path: "Subscription",
