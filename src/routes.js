@@ -7,6 +7,8 @@ import Shef from "./pages/shef";
 import Feature from "./components/Feature/Feature";
 import Subacriptions from "./components/Subscription/Subacriptions";
 import Menu from "./components/Menu/Menu";
+import IndianFood from "./components/IndianMenu/Indian-Menu";
+import BanglaFood from "./components/BanglaFood/BanglaFood";
 
 
 const router = createBrowserRouter([
@@ -33,8 +35,15 @@ const router = createBrowserRouter([
     {
         path: "Subscription",
         element: <Subacriptions />,
-    }
-    
+    },
+    {
+        path: "indian-Menu",
+        element: <IndianFood />,
+    },
+    {
+        path: "BanglaFood",
+        element: <BanglaFood />,
+    },
 ]);
 
 export default router;

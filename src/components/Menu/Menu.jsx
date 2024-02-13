@@ -1,108 +1,157 @@
-import React from 'react';
+import React from "react";
+import Navbar from "../Navbar/Navbar"; // Import your Navbar component from its file
+import Footer from "../../container/Footer/Footer"; // Import your Footer component from its file
 import "./Menu.css";
-import Navbar from '../Navbar/Navbar';
-import { Footer } from '../../container';
+import { Link } from "react-router-dom";
 
 const Menu = () => {
   return (
-    <>
+    <div>
       <Navbar />
-      <div className="rope">
-        <img 
-          src="https://notbigmuzzy.github.io/codepen/example1/rope.png" 
-          alt="Rope" 
-          className="rope-left" 
-          style={{ width: '50px', height: 'auto' }} // Adjust the width as needed
-        />
-        <img 
-          src="https://notbigmuzzy.github.io/codepen/example1/rope.png" 
-          alt="Rope" 
-          className="rope-right" 
-          style={{ width: '50px', height: 'auto' }} // Adjust the width as needed
-        />
-      </div>
-      <div>
-        <div className="body-wrap">
-          <h1 className="page1-title">M E N U</h1>
-          <div className="page1-desc">
-            <h3>SEPTEMBER 9</h3>
-            <br />
-            <hr />
-            <br />
-            <p>Today, our chef will take you on a travel around the world, with an entry from Europe, our best American meat and an authentic dessert from Asia.</p>
-          </div>
+      <div className="wrapper">
+        <div className="title">
+          <h4>
+            <span>fresh food for good health </span>our menu
+          </h4>
         </div>
-      </div>
-      <div className="page2 page"><img src="https://notbigmuzzy.github.io/codepen/example1/grapes.png" alt="Grapes" className="grapes" />
-        <div className="body-wrap">
-          <div className="pg2-middle-wrap">
-            <div className="pg2-green-back"></div>
-            <div className="pg2-white-desc">
-              <hr className="hr1" />
-              <h3>APPETIZERS</h3>
-              <hr className="hr2" />
-              <hr className="hr3" />
-              <h2>WINE & BRIE</h2>
-              <hr className="hr4" />
-              <hr className="hr5" />
-              <p>Our most delicious selection of cheeses with wide ranges of wine from our cellar.</p>
-              <hr className="hr6" />
-            </div>
-            <div className="pg2-photo-wrap">
-              <div className="pg2-photo"></div>
+
+        <div className="menu">
+          <div className="single-menu">
+            <img
+              src="https://feastandfarm.com/wp-content/uploads/chickentendersalad-787x1024.jpg"
+              width="162px"
+              height="211px"
+              alt=""
+            />
+            <div className="menu-content">
+              <h4>
+                Our Indian Item <span>45K</span>
+              </h4>
+              <p>
+                Fried chicken salad is the perfect blend of crispy chicken and
+                fresh veggies tossed in your favorite dressing. Make it even
+                quicker with frozen chicken tenders or pick up a few in your
+                deli section
+              </p>
+              <Link to="/indian-menu">
+                <button>View Indian Menu</button>
+              </Link>
             </div>
           </div>
-        </div>
-      </div>
-      <div className="page3 page"><img src="https://notbigmuzzy.github.io/codepen/example1/leafs.png" alt="Leafs" className="leafs" />
-        <div className="body-wrap">
-          <div className="pg3-middle-wrap">
-            <div className="pg3-red-back"></div>
-            <div className="pg3-photo-wrap">
-              <div className="pg3-photo"></div>
-            </div>
-            <div className="pg3-white-desc">
-              <hr className="hr1" />
-              <h3>FROM THE GRILL</h3>
-              <hr className="hr2" />
-              <hr className="hr3" />
-              <h2>BEEF STEAK</h2>
-              <hr className="hr4" />
-              <hr className="hr5" />
-              <p>Aged for extra flavor & tenderness. Rubbed with our unique blend of spices and slow roasted.</p>
-              <hr className="hr6" />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="page4 page"><img src="https://notbigmuzzy.github.io/codepen/example1/dessert.png" alt="Dessert" className="dessert" />
-        <div className="body-wrap">
-          <div className="pg4-middle-wrap">
-            <div className="pg4-bezh-back"></div>
-            <div className="pg4-white-desc">
-              <hr className="hr1" />
-              <h3>DESSERT</h3>
-              <hr className="hr2" />
-              <hr className="hr3" />
-              <h2>THAI MANGO</h2>
-              <hr className="hr4" />
-              <hr className="hr5" />
-              <p>This wonderful and authentic Thai dessert comes with a sweet, sticky rice and a special dressing.</p>
-              <hr className="hr6" />
-            </div>
-            <div className="pg4-photo-wrap">
-              <div className="pg4-photo"></div>
+
+          <div class="single-menu">
+            <img
+              src="https://healthyfitnessmeals.com/wp-content/uploads/2020/05/instagram-In-Stream_Square___Shrimp-spaghetti-3.jpg"
+              width="162px"
+              height="211px"
+              alt=""
+            />
+            <div class="menu-content">
+              <h4>
+                Bangladesh Item <span>50K</span>
+              </h4>
+              <p>
+                Shrimp Spaghetti is such a comforting pasta dish, perfect for
+                busy weeknights! Plump, garlicky prawns nestle on a bed of
+                spaghetti, bejeweled with bright red baby tomatoes and vibrant
+                green spinach. It’s simple but loaded with flavor from the
+                seasoned seafood broth. Bright, easy, filling, and so delicious!
+                Make it with any other protein like chicken
+                or salmon chunks.
+              </p>
+              <Link to="/BanglaFood">
+                <button>Bangladeshi Food</button>
+              </Link>
             </div>
           </div>
-        </div>
-      </div>
-      <div className="page5 page">
-        <div className="body-wrap">
-          <h3>GLUTEN FREE & VEGAN AVAILABLE</h3>
+
+          <div class="single-menu">
+            <img
+              src="https://www.vvsupremo.com/wp-content/uploads/2018/05/Pepperoni-Pizza-1.jpg"
+              width="162px"
+              height="211px"
+              alt=""
+            />
+            <div class="menu-content">
+              <h4>
+                pepperoni pizza <span>85K</span>
+              </h4>
+              <p>
+                Pepperoni is characteristically soft, slightly smoky, and bright
+                red in color. Thinly sliced pepperoni is a popular pizza topping
+                in American pizzerias.
+              </p>
+            </div>
+          </div>
+
+          <div class="single-menu">
+            <img
+              src="https://assets.bonappetit.com/photos/58ff5f162278cd3dbd2c069c/master/pass/churros.jpg"
+              width="162px"
+              height="211px"
+              alt=""
+            />
+            <div class="menu-content">
+              <h4>
+                churros <span>30K</span>
+              </h4>
+              <p>
+                Elongated, crispy, crunchy and intensely fragrant, churros
+                consist of deep-fried yeast dough encrusted with sugar.Although
+                some may argue against consuming these sweet treats, warning
+                others about the dangerous effects of sugar and fat on human
+                bodies, the popularity of churros throughout the world doesn't
+                seem to wane.
+              </p>
+            </div>
+          </div>
+
+          <div class="single-menu">
+            <img
+              src="https://caferestodiary.files.wordpress.com/2018/10/tzof94381.png?w=340&h=341"
+              width="162px"
+              height="211px"
+              alt=""
+            />
+            <div class="menu-content">
+              <h4>
+                fish&chips <span>100K</span>
+              </h4>
+              <p>
+                Fish and chips is a hot dish consisting of fried fish in batter
+                served with chips. The dish originated in England and is an
+                example of culinary fusion, combining Iberian Jewish fried fish
+                with Belgian fried potatoes..
+              </p>
+            </div>
+          </div>
+
+          <div class="single-menu">
+            <img
+              src="https://recipes-secure-graphics.grocerywebsite.com/0_GraphicsRecipes/5607_4k.jpg"
+              width="162px"
+              height="211px"
+              alt=""
+            />
+            <div class="menu-content">
+              <h4>
+                Chiken Wings <span>75K</span>
+              </h4>
+              <p>
+                Buffalo wings, also called hot wings, chicken wings, or simply
+                wings, deep-fried, unbreaded chicken wings or drums coated with
+                a vinegar-and-cayenne-pepper hot sauce mixed with butter. They
+                are commonly served with celery and a blue cheese dipping sauce,
+                which acts as a cooling agent for the mouth
+              </p>
+            </div>
+          </div>
+
+          {/* Repeat the structure for other menu items */}
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 
