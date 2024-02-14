@@ -53,6 +53,15 @@ body {
   justify-content: space-between;
   width: 100%;
 }
+.menu-content button{
+  background-color: #041335;
+  border-radius: 10px;
+  color: white;
+  margin: 5px;
+  padding: 5px;
+  
+  
+}
 
 .single-menu {
   flex-basis: 580px;
