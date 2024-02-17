@@ -1,47 +1,93 @@
-.menuItems {
-  display: flex;
-  flex-direction: column;
-  margin: 30px 30px;
+/* Menu.module.css */
+
+.foodCard {
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 10px;
 }
 
-.foodItem {
+.foodImage {
+  width: 80%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.cardButtons {
   display: flex;
   justify-content: space-between;
+  padding: 10px;
+  background-color: #f9f9f9;
 }
 
-.foodColumn {
-  flex: 1;
+.cardButton {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.foodImage img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
+.cardButton:hover {
+  background-color: #ddd;
 }
 
-.foodValue,
-.foodDetails,
-.order {
+.cart {
+  margin-top: 20px;
+}
+
+.cart h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.cart ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.cart li {
+  margin-bottom: 5px;
+}
+
+
+.container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-between; /* Align items to start and end */
+  padding: 20px; /* Add padding to the container */
 }
 
-.foodValue h3,
-.foodDetails h3 {
-  margin-top: 0;
-}
-
-
-
-.order {
+.foodItems {
+  width: 80%; /* Occupy 70% of the container width */
   display: flex;
-  flex-direction: column;
-  align-items: flex-end; /* Align items to the right */
-  position: relative; /* Make the parent container for positioning */
+  flex-wrap: wrap; /* Allow food items to wrap to the next line */
 }
 
+.foodCard {
+  width: calc(33.33% - 20px); /* Three cards per row with margin */
+  margin-bottom: 20px; /* Add margin between food cards */
+}
 
-.cartButton:hover {
-  background-color: #0056b3;
+.cart {
+  width: 20%; /* Occupy 30% of the container width */
+}
+.priceButton {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: #f9f9f9;
+}
+
+.priceButton:hover {
+  background-color: #ddd;
+}
+
+@media (max-width: 768px) {
+  .foodCard {
+    width: 100%; /* One card per row for mobile devices */
+    margin: 0;
+  }
 }

@@ -1,350 +1,104 @@
-import React from 'react';
-import styles from "./Menu.module.css"; // Import the CSS module
+import React, { useState } from "react";
+import styles from "./Menu.module.css";
 import breakfast1 from "../../assets/food1.png";
 import breakfast2 from "../../assets/food3.png";
 import breakfast3 from "../../assets/food2.png";
 
 const Menu = ({ activeMenu }) => {
-  // Define menu items for each category
+  const [cartItems, setCartItems] = useState([]);
+
+  const addToCart = (item) => {
+    setCartItems([...cartItems, item]);
+  };
+
+  const removeFromCart = (index) => {
+    const updatedCart = [...cartItems];
+    updatedCart.splice(index, 1);
+    setCartItems(updatedCart);
+  };
+
+  const getTotalPrice = () => {
+    return cartItems.reduce((total, item) => total + item.price, 0);
+  };
+
+  const FoodCard = ({ image, name, details, price }) => (
+    <div className={styles.foodCard}>
+      <img src={image} alt={name} className={styles.foodImage} />
+      <div className={styles.cardButtons}>
+        <button className={styles.cardButton}>Details</button>
+        <button
+          className={styles.cardButton}
+          onClick={() => addToCart({ name, price })}
+        >
+        Cart
+        </button>
+        <button className={styles.priceButton}>${price}</button>
+      </div>
+    </div>
+  );
+
+  const CartItem = ({ item, index }) => (
+    <li>
+      {item.name} - ${item.price}
+      <button onClick={() => removeFromCart(index)}>Remove</button>
+    </li>
+  );
+
   const breakfastItems = (
     <>
-      <div className={styles.menuItems}>
-        <h2>Parata Vaji</h2>
-        <div className={styles.foodItem}>
-          <div className={styles.foodColumn}>
-            <div className="foodImage"><img src={breakfast2} alt="" className={styles.foodImage} /></div>
-          </div>
-          <div className={styles.foodColumn}>
-            <div className="foodValue">
-              <h3>Food Values</h3>
-              <h5>Calories: 200</h5>
-              <h5>Minerals: 500</h5> 
-              <h5>Carbogydrates: 230</h5>
-              <h5>Vitamin: 200</h5> 
-            </div>
-        </div>
-        <div className={styles.foodColumn}>
-          <div className="foodDetails">
-            <h3>Item Name</h3>
-            <h5>Parata: 2 pcs</h5>
-            <h5>Eggs: 1 pc</h5>
-            <h5>Vaji: 1 plate</h5>
-            <h5>Water: 500ml</h5>
-          </div>
-        </div>
-        <div className={styles.foodColumn}>
-          <div className="order">
-            <button className="price">Price: $40</button>
-            <button className="AddToCart">Add To Card</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div className={styles.menuItems}>
-        <h2>Parata Vaji</h2>
-        <div className={styles.foodItem}>
-          <div className={styles.foodColumn}>
-            <div className="foodImage"><img src={breakfast1} alt="" className={styles.foodImage} /></div>
-          </div>
-          <div className={styles.foodColumn}>
-            <div className="foodValue">
-              <h3>Food Values</h3>
-              <h5>Calories: 200</h5>
-              <h5>Minerals: 500</h5> 
-              <h5>Carbogydrates: 230</h5>
-              <h5>Vitamin: 200</h5> 
-            </div>
-        </div>
-        <div className={styles.foodColumn}>
-          <div className="foodDetails">
-            <h3>Item Name</h3>
-            <h5>Parata: 2 pcs</h5>
-            <h5>Eggs: 1 pc</h5>
-            <h5>Vaji: 1 plate</h5>
-            <h5>Water: 500ml</h5>
-          </div>
-        </div>
-        <div className={styles.foodColumn}>
-          <div className="order">
-            <button className="price">Price: $40</button>
-            <button className="AddToCart">Add To Card</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div className={styles.menuItems}>
-        <h2>Parata Vaji</h2>
-        <div className={styles.foodItem}>
-          <div className={styles.foodColumn}>
-            <div className="foodImage"><img src={breakfast2} alt="" className={styles.foodImage} /></div>
-          </div>
-          <div className={styles.foodColumn}>
-            <div className="foodValue">
-              <h3>Food Values</h3>
-              <h5>Calories: 200</h5>
-              <h5>Minerals: 500</h5> 
-              <h5>Carbogydrates: 230</h5>
-              <h5>Vitamin: 200</h5> 
-            </div>
-        </div>
-        <div className={styles.foodColumn}>
-          <div className="foodDetails">
-            <h3>Item Name</h3>
-            <h5>Parata: 2 pcs</h5>
-            <h5>Eggs: 1 pc</h5>
-            <h5>Vaji: 1 plate</h5>
-            <h5>Water: 500ml</h5>
-          </div>
-        </div>
-        <div className={styles.foodColumn}>
-          <div className="order">
-            <button className="price">Price: $40</button>
-            <button className="AddToCart">Add To Card</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div className={styles.menuItems}>
-        <h2>Parata Vaji</h2>
-        <div className={styles.foodItem}>
-          <div className={styles.foodColumn}>
-          <div className="foodImage"><img src={breakfast3} alt="" className={styles.foodImage} /></div>
-          </div>
-          <div className={styles.foodColumn}>
-            <div className="foodValue">
-              <h3>Food Values</h3>
-              <h5>Calories: 200</h5>
-              <h5>Minerals: 500</h5> 
-              <h5>Carbogydrates: 230</h5>
-              <h5>Vitamin: 200</h5> 
-            </div>
-        </div>
-        <div className={styles.foodColumn}>
-          <div className="foodDetails">
-            <h3>Item Name</h3>
-            <h5>Parata: 2 pcs</h5>
-            <h5>Eggs: 1 pc</h5>
-            <h5>Vaji: 1 plate</h5>
-            <h5>Water: 500ml</h5>
-          </div>
-        </div>
-        <div className={styles.foodColumn}>
-          <div className="order">
-            <button className="price">Price: $40</button>
-            <button className="AddToCart">Add To Card</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div className={styles.menuItems}>
-        <h2>Parata Vaji</h2>
-        <div className={styles.foodItem}>
-          <div className={styles.foodColumn}>
-            <div className="foodImage"><img src={breakfast2} alt="" className={styles.foodImage} /></div>
-          </div>
-          <div className={styles.foodColumn}>
-            <div className="foodValue">
-              <h3>Food Values</h3>
-              <h5>Calories: 200</h5>
-              <h5>Minerals: 500</h5> 
-              <h5>Carbogydrates: 230</h5>
-              <h5>Vitamin: 200</h5> 
-            </div>
-        </div>
-        <div className={styles.foodColumn}>
-          <div className="foodDetails">
-            <h3>Item Name</h3>
-            <h5>Parata: 2 pcs</h5>
-            <h5>Eggs: 1 pc</h5>
-            <h5>Vaji: 1 plate</h5>
-            <h5>Water: 500ml</h5>
-          </div>
-        </div>
-        <div className={styles.foodColumn}>
-          <div className="order">
-            <button className="price">Price: $40</button>
-            <button className="AddToCart">Add To Card</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    </>
-  );
-  const lunchItems = (
-    <>
-      <div className={styles.menuItems}>
-        <h2>Parata Vaji</h2>
-        <div className={styles.foodItem}>
-          <div className={styles.foodColumn}>
-            <div className="foodImage"><img src={breakfast1} alt="" className={styles.foodImage} /></div>
-          </div>
-          <div className={styles.foodColumn}>
-            <div className="foodValue">
-              <h3>Food Values</h3>
-              <h5>Calories: 200</h5>
-              <h5>Minerals: 500</h5> 
-              <h5>Carbogydrates: 230</h5>
-              <h5>Vitamin: 200</h5> 
-            </div>
-        </div>
-        <div className={styles.foodColumn}>
-          <div className="foodDetails">
-            <h3>Item Name</h3>
-            <h5>Parata: 2 pcs</h5>
-            <h5>Eggs: 1 pc</h5>
-            <h5>Vaji: 1 plate</h5>
-            <h5>Water: 500ml</h5>
-          </div>
-        </div>
-        <div className={styles.foodColumn}>
-          <div className="order">
-            <button className="price">Price: $40</button>
-            <button className="AddToCart">Add To Card</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div className={styles.menuItems}>
-        <h2>Parata Vaji</h2>
-        <div className={styles.foodItem}>
-          <div className={styles.foodColumn}>
-            <div className="foodImage"><img src={breakfast2} alt="" className={styles.foodImage} /></div>
-          </div>
-          <div className={styles.foodColumn}>
-            <div className="foodValue">
-              <h3>Food Values</h3>
-              <h5>Calories: 200</h5>
-              <h5>Minerals: 500</h5> 
-              <h5>Carbogydrates: 230</h5>
-              <h5>Vitamin: 200</h5> 
-            </div>
-        </div>
-        <div className={styles.foodColumn}>
-          <div className="foodDetails">
-            <h3>Item Name</h3>
-            <h5>Parata: 2 pcs</h5>
-            <h5>Eggs: 1 pc</h5>
-            <h5>Vaji: 1 plate</h5>
-            <h5>Water: 500ml</h5>
-          </div>
-        </div>
-        <div className={styles.foodColumn}>
-          <div className="order">
-            <button className="price">Price: $40</button>
-            <button className="AddToCart">Add To Card</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div className={styles.menuItems}>
-        <h2>Parata Vaji</h2>
-        <div className={styles.foodItem}>
-          <div className={styles.foodColumn}>
-            <div className="foodImage"><img src={breakfast3} alt="" className={styles.foodImage} /></div>
-          </div>
-          <div className={styles.foodColumn}>
-            <div className="foodValue">
-              <h3>Food Values</h3>
-              <h5>Calories: 200</h5>
-              <h5>Minerals: 500</h5> 
-              <h5>Carbogydrates: 230</h5>
-              <h5>Vitamin: 200</h5> 
-            </div>
-        </div>
-        <div className={styles.foodColumn}>
-          <div className="foodDetails">
-            <h3>Item Name</h3>
-            <h5>Parata: 2 pcs</h5>
-            <h5>Eggs: 1 pc</h5>
-            <h5>Vaji: 1 plate</h5>
-            <h5>Water: 500ml</h5>
-          </div>
-        </div>
-        <div className={styles.foodColumn}>
-          <div className="order">
-            <button className="price">Price: $40</button>
-            <button className="AddToCart">Add To Card</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div className={styles.menuItems}>
-        <h2>Parata Vaji</h2>
-        <div className={styles.foodItem}>
-          <div className={styles.foodColumn}>
-          <div className="foodImage"><img src={breakfast2} alt="" className={styles.foodImage} /></div>
-          </div>
-          <div className={styles.foodColumn}>
-            <div className="foodValue">
-              <h3>Food Values</h3>
-              <h5>Calories: 200</h5>
-              <h5>Minerals: 500</h5> 
-              <h5>Carbogydrates: 230</h5>
-              <h5>Vitamin: 200</h5> 
-            </div>
-        </div>
-        <div className={styles.foodColumn}>
-          <div className="foodDetails">
-            <h3>Item Name</h3>
-            <h5>Parata: 2 pcs</h5>
-            <h5>Eggs: 1 pc</h5>
-            <h5>Vaji: 1 plate</h5>
-            <h5>Water: 500ml</h5>
-          </div>
-        </div>
-        <div className={styles.foodColumn}>
-          <div className="order">
-            <button className="price">Price: $40</button>
-            <button className="AddToCart">Add To Card</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div className={styles.menuItems}>
-        <h2>Parata Vaji</h2>
-        <div className={styles.foodItem}>
-          <div className={styles.foodColumn}>
-            <div className="foodImage"><img src={breakfast2} alt="" className={styles.foodImage} /></div>
-          </div>
-          <div className={styles.foodColumn}>
-            <div className="foodValue">
-              <h3>Food Values</h3>
-              <h5>Calories: 200</h5>
-              <h5>Minerals: 500</h5> 
-              <h5>Carbogydrates: 230</h5>
-              <h5>Vitamin: 200</h5> 
-            </div>
-        </div>
-        <div className={styles.foodColumn}>
-          <div className="foodDetails">
-            <h3>Item Name</h3>
-            <h5>Parata: 2 pcs</h5>
-            <h5>Eggs: 1 pc</h5>
-            <h5>Vaji: 1 plate</h5>
-            <h5>Water: 500ml</h5>
-          </div>
-        </div>
-        <div className={styles.foodColumn}>
-          <div className="order">
-            <button className="price">Price: $40</button>
-            <button className="AddToCart">Add To Card</button>
-          </div>
-        </div>
-      </div>
-    </div>
+      <FoodCard
+        image={breakfast1}
+        name="Parata Vaji"
+        details="Parata: 2 pcs, Eggs: 1 pc, Vaji: 1 plate, Water: 500ml"
+        price={24}
+      />
+      <FoodCard
+        image={breakfast2}
+        name="Parata Vaji"
+        details="Parata: 2 pcs, Eggs: 1 pc, Vaji: 1 plate, Water: 500ml"
+        price={25}
+      />
+      <FoodCard
+        image={breakfast3}
+        name="Parata Vaji"
+        details="Parata: 2 pcs, Eggs: 1 pc, Vaji: 1 plate, Water: 500ml"
+        price={105}
+      />
+      <FoodCard
+        image={breakfast2}
+        name="Parata Vaji"
+        details="Parata: 2 pcs, Eggs: 1 pc, Vaji: 1 plate, Water: 500ml"
+        price={25}
+      />
+      <FoodCard
+        image={breakfast1}
+        name="Parata Vaji"
+        details="Parata: 2 pcs, Eggs: 1 pc, Vaji: 1 plate, Water: 500ml"
+        price={24}
+      />
     </>
   );
 
-  // Define lunchItems, dinnerItems, drinksItems, and dessertItems similarly
-
-  // Render the corresponding menu items based on activeMenu
   return (
-    <div>
-      {activeMenu === 'breakfast' && breakfastItems}
-      {activeMenu === 'lunch' && lunchItems}
-
-      {/* Render lunchItems, dinnerItems, drinksItems, and dessertItems similarly */}
+    <>
+    <div className={styles.container}>
+      <div className={styles.foodItems}>
+        {/* Food items */}
+        {activeMenu === "breakfast" && breakfastItems}
+        {/* Render lunchItems, dinnerItems, drinksItems, and dessertItems similarly */}
+      </div>
+      <div className={styles.cart}>
+        {/* Cart section */}
+        <h2>Cart</h2>
+        <ul>
+          {cartItems.map((item, index) => (
+            <CartItem key={index} item={item} index={index} />
+          ))}
+        </ul>
+        <h3>Total Price: ${getTotalPrice()}</h3>
+      </div>
     </div>
+    </>
   );
 };
 

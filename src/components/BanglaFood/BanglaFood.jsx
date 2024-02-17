@@ -7,7 +7,7 @@ import "./BanglaFood.css";
 
 function BanglaFood() {
   // Initialize state for tracking the active menu
-  const [activeMenu, setActiveMenu] = useState(null);
+  const [activeMenu, setActiveMenu] = useState("breakfast");
 
   // Function to handle menu clicks
   const handleMenuClick = (menu) => {
@@ -18,7 +18,7 @@ function BanglaFood() {
   return (
     <>
     <Navbar />
-      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px', marginBottom: '15px' }}>
         {/* Navigation buttons */}
         <button style={{ marginRight: '10px', padding:'5px' }} onClick={() => handleMenuClick("breakfast")}>Breakfast</button>
         <button style={{ marginRight: '10px' }} onClick={() => handleMenuClick("lunch")}>Lunch</button>
