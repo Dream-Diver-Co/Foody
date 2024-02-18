@@ -3,6 +3,8 @@ import styles from "./Menu.module.css";
 import breakfast1 from "../../assets/food1.png";
 import breakfast2 from "../../assets/food3.png";
 import breakfast3 from "../../assets/food2.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartPlus, faEye } from "@fortawesome/free-solid-svg-icons";
 
 const Menu = ({ activeMenu }) => {
   const [cartItems, setCartItems] = useState([]);
@@ -25,14 +27,16 @@ const Menu = ({ activeMenu }) => {
     <div className={styles.foodCard}>
       <img src={image} alt={name} className={styles.foodImage} />
       <div className={styles.cardButtons}>
-        <button className={styles.cardButton}>Details</button>
-        <button
-          className={styles.cardButton}
-          onClick={() => addToCart({ name, price })}
-        >
-        Cart
+        <button className={`${styles.cardButton} ${styles.cartIcon}`} onClick={() => addToCart({ name, price })}>
+          <FontAwesomeIcon icon={faCartPlus} />
         </button>
-        <button className={styles.priceButton}>${price}</button>
+        <button className={`${styles.cardButton} ${styles.eyeIcon}`}>
+          <FontAwesomeIcon icon={faEye} />
+        </button>
+      </div>
+      <div className={styles.foodInfo}>
+        <h3>{name}</h3>
+        <p>${price}</p>
       </div>
     </div>
   );
@@ -54,26 +58,26 @@ const Menu = ({ activeMenu }) => {
       />
       <FoodCard
         image={breakfast2}
-        name="Parata Vaji"
-        details="Parata: 2 pcs, Eggs: 1 pc, Vaji: 1 plate, Water: 500ml"
+        name="Omelette"
+        details="Eggs: 2 pcs, Cheese: 1 slice, Veggies: Onion, Tomato"
         price={25}
       />
       <FoodCard
         image={breakfast3}
-        name="Parata Vaji"
-        details="Parata: 2 pcs, Eggs: 1 pc, Vaji: 1 plate, Water: 500ml"
+        name="Pancakes"
+        details="Pancakes: 3 pcs, Maple syrup: 2 tbsp, Butter: 1 tbsp"
         price={105}
       />
       <FoodCard
         image={breakfast2}
-        name="Parata Vaji"
-        details="Parata: 2 pcs, Eggs: 1 pc, Vaji: 1 plate, Water: 500ml"
+        name="French Toast"
+        details="Bread: 2 slices, Eggs: 2 pcs, Milk: 1/4 cup, Cinnamon: 1/2 tsp"
         price={25}
       />
       <FoodCard
         image={breakfast1}
-        name="Parata Vaji"
-        details="Parata: 2 pcs, Eggs: 1 pc, Vaji: 1 plate, Water: 500ml"
+        name="Waffles"
+        details="Waffles: 2 pcs, Fresh berries: 1 cup, Whipped cream: 2 tbsp"
         price={24}
       />
     </>
@@ -81,7 +85,7 @@ const Menu = ({ activeMenu }) => {
 
   return (
     <>
-    <div className={styles.container}>
+      <div className={styles.container}>
       <div className={styles.foodItems}>
         {/* Food items */}
         {activeMenu === "breakfast" && breakfastItems}

@@ -12,6 +12,7 @@
   width: 80%;
   height: 200px;
   object-fit: cover;
+  margin: auto; /* Center the image horizontally */
 }
 
 .cardButtons {
@@ -65,24 +66,56 @@
 }
 
 .foodCard {
-  width: calc(33.33% - 20px); /* Three cards per row with margin */
-  margin-bottom: 20px; /* Add margin between food cards */
+  width: calc(33.33% - 20px); /* Three cards per row for laptop screens with 20px margin */
+  margin: 0 10px 20px 0; /* Adjust margin between cards */
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative; /* Add position relative */
+  height: 300px; 
 }
 
-.cart {
-  width: 20%; /* Occupy 30% of the container width */
+.cardButtons {
+  display: none;
+  position: absolute;
+  bottom: 0; /* Align buttons to the bottom of the card */
+  width: 100%; /* Make buttons container full width */
+  padding: 10px;
+  background-color: transparent;
 }
-.priceButton {
+
+.foodCard:hover .cardButtons {
+  display: flex; /* Show buttons on hover */
+  justify-content: space-between; /* Distribute buttons evenly */
+}
+
+.cardButton {
   padding: 5px 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  background-color: #f9f9f9;
 }
 
-.priceButton:hover {
+.cardButton:hover {
   background-color: #ddd;
+}
+.cardContent {
+  padding: 10px;
+}
+
+.foodInfo {
+  text-align: center; /* Center align name and price */
+}
+
+.foodInfo h3 {
+  margin: 5px 0;
+}
+
+.foodInfo p {
+  margin: 0;
 }
 
 @media (max-width: 768px) {
