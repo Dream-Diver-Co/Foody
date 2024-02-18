@@ -1,30 +1,41 @@
-import React from 'react'
-import { useState } from 'react'
-import Navbar from '../Navbar/Navbar'
-import { Footer } from '../../container'
-import Menu from './Menu'
-import "./BanglaFood.css";
+import React, { useState } from 'react';
+import Navbar from '../Navbar/Navbar';
+import { Footer } from '../../container';
+import Menu from './Menu';
+import './BanglaFood.css';
 
 function BanglaFood() {
-  // Initialize state for tracking the active menu
-  const [activeMenu, setActiveMenu] = useState("breakfast");
+  // Initialize state for tracking the active menu and active button
+  const [activeMenu, setActiveMenu] = useState('breakfast');
+  const [activeButton, setActiveButton] = useState('breakfast');
 
   // Function to handle menu clicks
   const handleMenuClick = (menu) => {
     setActiveMenu(menu);
+    setActiveButton(menu); // Update active button when menu changes
+  };
+
+  // Render buttons
+  const renderButtons = () => {
+    const buttons = ['breakfast', 'lunch', 'dinner', 'drinks', 'dessert'];
+    return buttons.map((button) => (
+      <button
+        key={button}
+        className={activeButton === button ? 'active' : ''}
+        onClick={() => handleMenuClick(button)}
+      >
+        {button.charAt(0).toUpperCase() + button.slice(1)}
+      </button>
+    ));
   };
 
   // Return JSX
   return (
     <>
-    <Navbar />
-      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px', marginBottom: '15px' }}>
-        {/* Navigation buttons */}
-        <button style={{ marginRight: '10px', padding:'5px' }} onClick={() => handleMenuClick("breakfast")}>Breakfast</button>
-        <button style={{ marginRight: '10px' }} onClick={() => handleMenuClick("lunch")}>Lunch</button>
-        <button style={{ marginRight: '10px' }} onClick={() => handleMenuClick("dinner")}>Dinner</button>
-        <button style={{ marginRight: '10px' }} onClick={() => handleMenuClick("drinks")}>Drinks</button>
-        <button onClick={() => handleMenuClick("dessert")}>Dessert</button>
+      <Navbar />
+      <div className="menu-buttons">
+        {/* Render buttons */}
+        {renderButtons()}
       </div>
       {/* Render menu based on activeMenu */}
       <Menu activeMenu={activeMenu} />
@@ -33,4 +44,4 @@ function BanglaFood() {
   );
 }
 
-export default BanglaFood; // Export the BanglaFood component
+export default BanglaFood;

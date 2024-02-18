@@ -117,6 +117,40 @@
 .foodInfo p {
   margin: 0;
 }
+.deleteIcon {
+  color: red;
+}
+.cartItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.cartItemInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.deleteIcon {
+  cursor: pointer;
+}
+
+.totalPrice {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background: red;
+}
+.titleContainer {
+  text-align: center;
+  margin-bottom: 20px; /* Adjust as needed */
+}
+
+.title {
+  /* Add styles for the title */
+}
 
 @media (max-width: 768px) {
   .foodCard {
