@@ -117,7 +117,7 @@
     content: '';
     position: absolute;
     border-radius: 50%;
-    animation: orbit 60s linear infinite;
+    /* animation: orbit 60s linear infinite; */
 }
 .earth::before {
     top: 10em;
