@@ -3,42 +3,56 @@ import Navbar from '../Navbar/Navbar';
 import { Footer } from '../../container';
 import Menu from './Menu';
 import './BanglaFood.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import CartModal from './CartModal';
 
 function BanglaFood() {
-  // Initialize state for tracking the active menu and active button
-  const [activeMenu, setActiveMenu] = useState('breakfast');
-  const [activeButton, setActiveButton] = useState('breakfast');
+  const [activeMenu, setActiveMenu] = useState('all');
+  const [activeButton, setActiveButton] = useState('all');
+  const [cartItems, setCartItems] = useState([]);
+  const [showCartModal, setShowCartModal] = useState(false); // State to manage visibility of the cart modal
 
-  // Function to handle menu clicks
   const handleMenuClick = (menu) => {
     setActiveMenu(menu);
-    setActiveButton(menu); // Update active button when menu changes
+    setActiveButton(menu);
   };
 
-  // Render buttons
   const renderButtons = () => {
-    const buttons = ['breakfast', 'lunch', 'dinner', 'drinks', 'dessert'];
+    const buttons = ['all', 'breakfast', 'lunch', 'dinner', 'drinks', 'dessert'];
     return buttons.map((button) => (
       <button
         key={button}
         className={activeButton === button ? 'active' : ''}
         onClick={() => handleMenuClick(button)}
       >
-        {button.charAt(0).toUpperCase() + button.slice(1)}
+        {button === 'all' ? 'All' : button.charAt(0).toUpperCase() + button.slice(1)}
       </button>
     ));
   };
 
-  // Return JSX
+  const addToCart = (item) => {
+    setCartItems([...cartItems, item]);
+  };
+
+  const getTotalCartItems = () => cartItems.length;
+
+  const toggleCartModal = () => {
+    setShowCartModal(!showCartModal);
+  };
+
   return (
     <>
       <Navbar />
       <div className="menu-buttons">
-        {/* Render buttons */}
         {renderButtons()}
+        <div className="cart-button" onClick={toggleCartModal}>
+          <FontAwesomeIcon icon={faShoppingCart} />
+          {getTotalCartItems() > 0 && <span className="cart-count">{getTotalCartItems()}</span>}
+        </div>
       </div>
-      {/* Render menu based on activeMenu */}
-      <Menu activeMenu={activeMenu} />
+      <CartModal cartItems={cartItems} show={showCartModal} handleClose={toggleCartModal} />
+      <Menu activeMenu={activeMenu} cartItems={cartItems} setCartItems={setCartItems} />
       <Footer />
     </>
   );

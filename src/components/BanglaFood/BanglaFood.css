@@ -69,3 +69,31 @@ button {
   .menu-buttons button.active {
     border-bottom: 2px solid red;
   }
+
+
+  .menu-buttons {
+    display: flex;
+    justify-content: flex-start; /* Align buttons to the left */
+    align-items: center;
+  }
+  
+  .cart-button {
+    margin-left: auto; /* Push cart button to the right */
+  }
+  
+  .cart-button button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .cart-count {
+    background-color: red;
+    color: rgb(126, 19, 19);
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 12px;
+    position: relative;
+    top: -15px;
+    left: -10px;
+  }

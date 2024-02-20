@@ -7,13 +7,17 @@ import {
   faRetweet,
   faTrashAlt,
 } from "@fortawesome/free-solid-svg-icons";
+import { Dropdown } from "react-bootstrap";
 import breakfast1 from "../../assets/food1.png";
-import breakfast2 from "../../assets/food3.png";
-import breakfast3 from "../../assets/food2.png";
+import breakfast2 from "../../assets/biryani4.png";
+import breakfast3 from "../../assets/biryani5.png";
+import dinner1 from "../../assets/biryani.png";
+import dinner2 from "../../assets/biryani2.png";
+import dinner3 from "../../assets/biryani3.png";
 
 const Menu = ({ activeMenu }) => {
   const [cartItems, setCartItems] = useState([]);
-  const [detailsVisible, setDetailsVisible] = useState(Array(10).fill(false)); // Assuming max 10 items in the cart
+  const [detailsVisible, setDetailsVisible] = useState(Array(10).fill(false));
 
   const addToCart = (item) => {
     setCartItems([...cartItems, item]);
@@ -70,34 +74,38 @@ const Menu = ({ activeMenu }) => {
     </li>
   );
 
-  // Define breakfastItems
-  const breakfastItems = (
-    <>
-      <FoodCard image={breakfast1} name="Parata Vaji" price={24} />
-      <FoodCard image={breakfast2} name="Parata Vaji" price={25} />
-      <FoodCard image={breakfast3} name="Parata Vaji" price={105} />
-      {/* Define other breakfast items similarly */}
-    </>
-  );
-
-  // Define lunchItems, dinnerItems, drinkItems, and dessertItems similarly
+  const renderCartItems = () => {
+    return cartItems.map((item, index) => (
+      <Dropdown.Item key={index}>
+        <CartItem item={item} index={index} />
+      </Dropdown.Item>
+    ));
+  };
 
   return (
     <div className={styles.container}>
       <div className={styles.foodItems}>
-        {/* Food items */}
-        {activeMenu === "breakfast" && breakfastItems}
-        {/* Render lunchItems, dinnerItems, drinkItems, and dessertItems similarly */}
+        {/* Render food items based on active menu */}
+        {/* For simplicity, I'm rendering all food items */}
+        <FoodCard image={breakfast1} name="Parata Vaji" price={24} />
+        <FoodCard image={breakfast2} name="Parata Vaji" price={25} />
+        <FoodCard image={breakfast3} name="Parata Vaji" price={105} />
+        <FoodCard image={dinner1} name="Dinner Item 1" price={10} />
+        <FoodCard image={dinner2} name="Dinner Item 2" price={12} />
+        <FoodCard image={dinner3} name="Dinner Item 3" price={15} />
+        {/* Render other food items similarly */}
       </div>
       <div className={styles.cart}>
         {/* Cart section */}
-        <h2>Cart</h2>
-        <ul>
-          {cartItems.map((item, index) => (
-            <CartItem key={index} item={item} index={index} />
-          ))}
-        </ul>
-        <p>Total Price: ${getTotalPrice()}</p>
+        <Dropdown>
+          <Dropdown.Toggle variant="success">
+            Cart ({cartItems.length})
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            <ul>{renderCartItems()}</ul>
+            <p>Total Price: ${getTotalPrice()}</p>
+          </Dropdown.Menu>
+        </Dropdown>
       </div>
     </div>
   );
