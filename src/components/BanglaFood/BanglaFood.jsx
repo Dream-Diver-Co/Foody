@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
-import Navbar from '../Navbar/Navbar';
-import { Footer } from '../../container';
-import Menu from './Menu';
-import './BanglaFood.css';
+import React, { useState } from "react";
+import Navbar from "../Navbar/Navbar";
+import { Footer } from "../../container";
+import Menu from "./Menu";
+import { FaShoppingCart } from "react-icons/fa";
+import { Badge, Dropdown } from "react-bootstrap";
+import "./BanglaFood.css";
 
 function BanglaFood() {
   // Initialize state for tracking the active menu and active button
-  const [activeMenu, setActiveMenu] = useState('breakfast');
-  const [activeButton, setActiveButton] = useState('breakfast');
+  const [activeMenu, setActiveMenu] = useState("breakfast");
+  const [activeButton, setActiveButton] = useState("breakfast");
 
   // Function to handle menu clicks
   const handleMenuClick = (menu) => {
@@ -17,11 +19,11 @@ function BanglaFood() {
 
   // Render buttons
   const renderButtons = () => {
-    const buttons = ['breakfast', 'lunch', 'dinner', 'drinks', 'dessert'];
+    const buttons = ["breakfast", "lunch", "dinner", "drinks", "dessert"];
     return buttons.map((button) => (
       <button
         key={button}
-        className={activeButton === button ? 'active' : ''}
+        className={activeButton === button ? "active" : ""}
         onClick={() => handleMenuClick(button)}
       >
         {button.charAt(0).toUpperCase() + button.slice(1)}

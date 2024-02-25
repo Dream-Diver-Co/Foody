@@ -1,11 +1,15 @@
 /* Menu.module.css */
 
 .foodCard {
-  width: 300px;
+  margin: 0 10px 20px 0; /* Adjust margin between cards */
+  display: flex;
+  flex-direction: column;
   border: 1px solid #ccc;
   border-radius: 8px;
   overflow: hidden;
-  margin: 10px;
+  position: relative; /* Add position relative */
+  height: 300px; 
+  background-color: #d8d6d6;
 }
 
 .foodImage {
@@ -60,23 +64,12 @@
 }
 
 .foodItems {
-  width: 80%; /* Occupy 70% of the container width */
+  width: 100%;
   display: flex;
   flex-wrap: wrap; /* Allow food items to wrap to the next line */
 }
 
-.foodCard {
-   /* Three cards per row for laptop screens with 20px margin */
-  margin: 0 10px 20px 0; /* Adjust margin between cards */
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  overflow: hidden;
-  position: relative; /* Add position relative */
-  height: 300px; 
-  background-color: #d8d6d6;
-}
+
 
 .cardButtons {
   display: none;
@@ -201,10 +194,29 @@
   background-color: rgb(0, 43, 128);
   transform: rotate(360deg); /* Scale the icon to 110% on hover */
 }
+.cartDropdown {
+  width: 300px; /* Set width of cart summary */
+  padding: 10px; /* Add padding to cart summary */
+  background-color: #f8f9fa; /* Set background color */
+  border: 1px solid #dee2e6; /* Add border */
+  border-radius: 4px; /* Add border radius */
+}
+.cartHeader {
+  font-weight: bold; /* Set font weight for header */
+  color: #343a40; /* Set text color */
+  background-color: #e9ecef; /* Set background color */
+}
+.cartItemContainer {
+  margin-bottom: 10px; /* Add margin bottom to each cart item */
+}
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
+  .foodItems {
+    width: 100%; /* Occupy 100% of the container width for screens smaller than 1200px */
+  }
+
   .foodCard {
-    width: 100%; /* One card per row for mobile devices */
-    margin: 0;
+    /* width: calc(25% - 15px); */
+    margin: 0 10px 20px 0; /* Adjust margin between cards */
   }
 }

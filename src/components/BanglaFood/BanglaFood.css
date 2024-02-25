@@ -69,3 +69,6 @@ button {
   .menu-buttons button.active {
     border-bottom: 2px solid red;
   }
+  .dropdown {
+    margin-left: auto; /* Auto margin pushes the dropdown to the right */
+  }

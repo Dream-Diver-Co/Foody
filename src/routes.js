@@ -9,6 +9,8 @@ import Subacriptions from "./components/Subscription/Subacriptions";
 import Menu from "./components/Menu/Menu";
 import IndianFood from "./components/IndianMenu/Indian-Menu";
 import BanglaFood from "./components/BanglaFood/BanglaFood";
+import Cart from "./components/Cart/Cart";
+
 
 
 const router = createBrowserRouter([
@@ -44,6 +46,10 @@ const router = createBrowserRouter([
         path: "BanglaFood",
         element: <BanglaFood />,
     },
+    {
+        path: "Cart",
+        element: <Cart />
+    }
 ]);
 
 export default router;
