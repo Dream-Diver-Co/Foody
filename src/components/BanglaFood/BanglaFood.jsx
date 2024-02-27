@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import { Footer } from "../../container";
 import Menu from "./Menu";
-import { FaShoppingCart } from "react-icons/fa";
-import { Badge, Dropdown } from "react-bootstrap";
 import "./BanglaFood.css";
 
 function BanglaFood() {

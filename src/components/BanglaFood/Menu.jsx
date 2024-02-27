@@ -6,6 +6,7 @@ import breakfast1 from "../../assets/food1.png";
 import breakfast2 from "../../assets/food3.png";
 import breakfast3 from "../../assets/food2.png";
 import { Dropdown, Badge } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Menu = ({ activeMenu }) => {
   const [cartItems, setCartItems] = useState([]); // State for cart items
@@ -22,13 +23,13 @@ const Menu = ({ activeMenu }) => {
         <div className={styles.foodCard}>
           <img src={image} alt="Food" className={styles.foodImage} />
           <div className={styles.overlayIcons}>
-            <a href="#">
+            <a>
               <FontAwesomeIcon icon={faHeart} />
             </a>
-            <a href="#">
+            <a>
               <FontAwesomeIcon icon={faRetweet} />
             </a>
-            <a href="#" onClick={handleAddToCart}>
+            <a onClick={handleAddToCart}>
               <FontAwesomeIcon icon={faCartPlus} />
             </a>
           </div>
@@ -61,31 +62,54 @@ const Menu = ({ activeMenu }) => {
     setCartItems(updatedCartItems);
   };
 
-  // Cart summary dropdown menu
-  const CartDropdown = () => (
-    <Dropdown.Menu show={showCartSummary} onClick={(e) => e.stopPropagation()} className={styles.cartDropdown}>
-      <Dropdown.Item header className={styles.cartHeader}>Cart Summary</Dropdown.Item>
-      {cartItems.map((item, index) => (
+// Inside the Menu component
+const CartDropdown = () => {
+  // Calculate total price
+  const totalPrice = cartItems.reduce((total, item) => total + Number(item.price), 0);
+
+  // Render cart items or "No Item Added" message
+  const renderCartItems = () => {
+    if (cartItems.length === 0) {
+      return <Dropdown.Item>No Item Added</Dropdown.Item>;
+    } else {
+      return cartItems.map((item, index) => (
         <div key={index} className={styles.cartItemContainer}>
           <Dropdown.Item>
-            {item.name} - ${item.price} {/* Display item name and price */}
+            {item.name} - ${item.price}
             <FontAwesomeIcon
               icon={faTrash}
               onClick={(e) => {
-                e.stopPropagation(); // Stop event propagation
-                handleRemoveItem(index); // Remove item from cart
+                e.stopPropagation();
+                handleRemoveItem(index);
               }}
               style={{ marginLeft: "10px", cursor: "pointer" }}
             />
           </Dropdown.Item>
         </div>
-      ))}
-      <Dropdown.Item>Total: ${cartItems.reduce((total, item) => total + Number(item.price), 0)}</Dropdown.Item> {/* Calculate and display total amount */}
+      ));
+    }
+  };
+
+  return (
+    <Dropdown.Menu show={showCartSummary} onClick={(e) => e.stopPropagation()} className={styles.cartDropdown}>
+      <Dropdown.Item header className={styles.cartHeader}>Cart Summary</Dropdown.Item>
+      <div className={styles.cartItemsContainer} style={{ maxHeight: "200px", overflowY: "auto" }}>
+        {renderCartItems()}
+      </div>
+      <Dropdown.Item>
+        <span>Total: ${totalPrice}</span>
+      </Dropdown.Item>
+      <Dropdown.Item>
+        {cartItems.length === 0 && <span>No Item Added</span>}
+      </Dropdown.Item>
+      {cartItems.length > 0 && (
+        <Dropdown.Item>
+          <Link to="/cart" className={styles.detailsCartLink}>Details Cart View</Link>
+        </Dropdown.Item>
+      )}
     </Dropdown.Menu>
   );
-  
-  
-  
+};
 
   return (
     <div className={styles.container}>
