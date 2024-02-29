@@ -1,64 +1,67 @@
-import React from 'react'
-import Navbar from '../Navbar/Navbar'
-import { Footer } from '../../container'
+import React from 'react';
+import Navbar from '../Navbar/Navbar';
+import { Footer } from '../../container';
 import './Subacriptions.css';
 
 const Subacriptions = () => {
   return (
     <>
-    <Navbar />
+      <Navbar />
 
-    <div className="Container flex">
-        
+      <div className="wrap">
+        <h1 className="pen-title">We Have 3 Subscription systems</h1>
 
-        <div class="SubscriptionPlane max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <a href="#">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Basic</h5>
-            </a>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-            <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                Buy Plane
-                <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                </svg>
-            </a>
-        </div>
+        <section className="pricing-section">
 
-        
+          <div className="pricing pricing-theme">
+            <div className="pricing-item">
+              <h3 className="pricing-title">Basic</h3>
+              <div className="pricing-price"><span className="pricing-currency">$</span>9.90</div>
+              <p className="pricing-sentence">Become Our Regular Client</p>
+              <ul className="pricing-feature-list">
+                <li className="pricing-feature">Order Anytime</li>
+                <li className="pricing-feature">Multiple Food Order</li>
+                <li className="pricing-feature">Food-Order for Occation</li>
+              </ul>
+              <button className="pricing-action">Subscribe</button>
+            </div>
+            
+            <div className="pricing-item">
+              <h3 className="pricing-title">Standard</h3>
+              <div className="pricing-price"><span className="pricing-currency">$</span>29.90</div>
+              <p className="pricing-sentence">Become Our Standard Client</p>
+              <ul className="pricing-feature-list">
+                <li className="pricing-feature">Order Anytime</li>
+                <li className="pricing-feature">Multiple Food Order</li>
+                <li className="pricing-feature">Food-Order for Occation</li>
+                <li className="pricing-feature">Birthday/Annivarsary Gift</li>
+                <li className="pricing-feature">1GB of storage space</li>
+              </ul>
+              <button className="pricing-action">Subscribe</button>
+            </div>
+            
+            <div className="pricing-item">
+              <h3 className="pricing-title">Premium</h3>
+              <div className="pricing-price"><span className="pricing-currency">$</span>59.90</div>
+              <p className="pricing-sentence">Gigantic business solution</p>
+              <ul className="pricing-feature-list">
+                <li className="pricing-feature">Unlimited calls</li>
+                <li className="pricing-feature">Free hosting</li>
+                <li className="pricing-feature">Unlimited hours of support</li>
+                <li className="pricing-feature">Social media integration</li>
+                <li className="pricing-feature">Analytics integration</li>
+                <li className="pricing-feature">Unlimited storage space</li>
+              </ul>
+              <button className="pricing-action">Subscribe</button>
+            </div>
+            
+          </div>
+        </section>
+      </div>
 
-        <div class="SubscriptionPlane max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <a href="#">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Premium</h5>
-            </a>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-            <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                Buy Plane
-                <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                </svg>
-            </a>
-        </div>
-
-        
-
-        <div class="SubscriptionPlane max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <a href="#">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Others</h5>
-            </a>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-            <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                Buy Plane
-                <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                </svg>
-            </a>
-        </div>
-
-    </div>
-    <Footer />
+      <Footer />
     </>
-    
-  )
+  );
 }
 
-export default Subacriptions
+export default Subacriptions;
