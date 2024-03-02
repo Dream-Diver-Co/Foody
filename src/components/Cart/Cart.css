@@ -1,0 +1,56 @@
+/* Cart.css */
+
+/* Reset margins and padding for the body */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set margin and padding to 0 for the table wrapper */
+.cart-table-wrapper {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set width to 100% for the table */
+.cart-table-wrapper table {
+    width: 100%;
+    border-collapse: separate; /* Ensure that borders are separated */
+    border-spacing: 10px; /* Add gap between columns */
+}
+
+/* Increase font size for table headers */
+.cart-table-wrapper th {
+    font-size: 16px;
+}
+
+/* Increase font size for table data */
+.cart-table-wrapper td {
+    font-size: 14px;
+}
+
+/* Increase font size for VAT and total price */
+.cart-summary .vat-total p {
+    font-size: 16px;
+}
+
+/* Increase font size for checkout button */
+.cart-summary .btn-checkout {
+    font-size: 16px;
+}
+
+/* Adjust width of specific table columns */
+.cart-table-wrapper th.product-image-col,
+.cart-table-wrapper td.product-image-col {
+    width: 150px; /* Adjust the width as needed */
+}
+
+.cart-table-wrapper th.product-name-col,
+.cart-table-wrapper td.product-name-col {
+    width: 200px; /* Adjust the width as needed */
+}
+
+.cart-table-wrapper th,
+.cart-table-wrapper td {
+    padding: 10px; /* Add padding to provide space between content and cell borders */
+}

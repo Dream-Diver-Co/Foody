@@ -1,75 +1,108 @@
-import React, { useState } from "react";
-import Navbar from "../Navbar/Navbar";
-import { Footer } from "../../container";
+import React, { useState } from 'react';
+import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../container/Footer/Footer";
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'; // Importing icons from react-icons
+import "./Cart.css"
 
-function Cart() {
-  // Sample cart items state
-  const [cartItems, setCartItems] = useState([
-    { id: 1, name: "Product 1", price: 5.11, quantity: 1 },
-    { id: 2, name: "Product 2", price: 10.99, quantity: 2 },
-    // Add more sample cart items as needed
-  ]);
+const Cart = () => {
+    // Sample data for demonstration
+    const [cartItems, setCartItems] = useState([
+        { id: 1, name: "Product 1", image: "image1.jpg", quantity: 2, price: 10 },
+        { id: 2, name: "Product 2", image: "image2.jpg", quantity: 1, price: 15 }
+    ]);
 
-  // Function to handle removing an item from the cart
-  const removeFromCart = (id) => {
-    setCartItems(cartItems.filter(item => item.id !== id));
-  };
+    // Calculate subtotal of each item
+    const calculateSubtotal = (quantity, price) => {
+        return quantity * price;
+    };
 
-  // Function to handle changing quantity of an item in the cart
-  const updateQuantity = (id, newQuantity) => {
-    setCartItems(cartItems.map(item => {
-      if (item.id === id) {
-        return { ...item, quantity: newQuantity };
-      }
-      return item;
-    }));
-  };
+    // Calculate total price of all items
+    const calculateTotalPrice = () => {
+        let total = 0;
+        cartItems.forEach(item => {
+            total += item.quantity * item.price;
+        });
+        return total;
+    };
 
-  // Calculate total price of items in the cart
-  const totalPrice = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+    // Increment product quantity
+    const incrementQuantity = (productId) => {
+        const updatedCartItems = cartItems.map(item => {
+            if (item.id === productId) {
+                return { ...item, quantity: item.quantity + 1 };
+            }
+            return item;
+        });
+        setCartItems(updatedCartItems);
+    };
 
-  return (
-    <>
-      
-      <div className="container">
-        <h1>Shopping Cart</h1>
-        <table className="table table-hover table-condensed">
-          <thead>
-            <tr>
-              <th>Product</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Subtotal</th>
-              <th>Action</th>
+    // Decrement product quantity
+    const decrementQuantity = (productId) => {
+        const updatedCartItems = cartItems.map(item => {
+            if (item.id === productId && item.quantity > 1) {
+                return { ...item, quantity: item.quantity - 1 };
+            }
+            return item;
+        });
+        setCartItems(updatedCartItems);
+    };
+
+    // Render table rows for cart items
+    const renderCartItems = () => {
+        return cartItems.map(item => (
+            <tr key={item.id}>
+                <td>{item.id}</td>
+                <td className="product-image-col"><img src={item.image} alt={item.name} style={{ width: "50px" }} /></td>
+                <td className="product-name-col">{item.name}</td>
+                <td>
+                    <FaChevronLeft onClick={() => decrementQuantity(item.id)} style={{ marginRight: '5px', cursor: 'pointer' }} />
+                    {item.quantity}
+                    <FaChevronRight onClick={() => incrementQuantity(item.id)} style={{ marginLeft: '5px', cursor: 'pointer' }} />
+                </td>
+                <td>${item.price}</td>
+                <td>${calculateSubtotal(item.quantity, item.price)}</td>
             </tr>
-          </thead>
-          <tbody>
-            {cartItems.map(item => (
-              <tr key={item.id}>
-                <td>{item.name}</td>
-                <td>${item.price.toFixed(2)}</td>
-                <td>
-                  <input
-                    type="number"
-                    value={item.quantity}
-                    onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}
-                  />
-                </td>
-                <td>${(item.price * item.quantity).toFixed(2)}</td>
-                <td>
-                  <button className="btn btn-danger" onClick={() => removeFromCart(item.id)}>Remove</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <div className="total-price">
-          <h3>Total Price: ${totalPrice.toFixed(2)}</h3>
-        </div>
-      </div>
-      
-    </>
-  );
-}
+        ));
+    };
+
+    return (
+        <>
+            <Navbar />
+            <section>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm-12 col-md-12">
+                            <div className="cart-table-wrapper">
+                                <table className="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Product Number</th>
+                                            <th>Product Image</th>
+                                            <th>Product Name</th>
+                                            <th>Product Quantity</th>
+                                            <th>Product Price</th>
+                                            <th>Subtotal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {renderCartItems()}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div className="cart-summary">
+                                <div className="vat-total">
+                                    <p>VAT: 10%</p>
+                                    <p>Total Price (including VAT): ${calculateTotalPrice() * 1.1}</p>
+                                </div>
+                                <button className="btn btn-dark btn-checkout">Checkout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <Footer />
+        </>
+    );
+};
 
 export default Cart;
