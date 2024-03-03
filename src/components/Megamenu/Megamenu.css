@@ -1,15 +1,24 @@
 .megamenu {
-    margin-top: 5px;
-    position: absolute;
-    top: 100%; /* Position the Megamenu below the Navbar item */
-    left: -300px;
-    background-color: #07021a; /* Set background color */
-    border: 1px solid #092074; /* Add border */
-    border-radius: 5px; /* Add border radius for rounded corners */
-    padding: 10px; /* Add padding for content */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
-    z-index: 1;
-}  
+  margin-top: 3px;
+  position: absolute;
+  top: 100%; /* Position the Megamenu below the Navbar item */
+  left: -400px;
+  width: 1000px; /* Adjust the width as needed */
+  background: linear-gradient(to right, #183d57, #da07af, rgb(0, 0, 0), rgb(86, 72, 72)); /* Initial gradient */
+  background-size: 400% auto;
+  animation: gradientAnimation 30s infinite; /* Change every 10 seconds, ad
+  border: 1px solid #092074; /* Add border */
+  border-radius: 10px; /* Add border radius for rounded corners */
+  padding: 10px; /* Add padding for content */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+  z-index: 1;
+}
+@keyframes gradientAnimation {
+  0% { background-position: 0% 25%; } /* Initial position */
+  25% { background-position: 25% 50%;}
+  50% { background-position: 50% 75%; } /* Halfway point */
+  100% { background-position: 75% 100%; } /* Reset to initial position */
+}
 .row {
     display: flex;
 }
@@ -18,11 +27,15 @@
     flex: 1;
     padding: 5px;
     text-align: center;
+    height: auto
+}
+.menu-item name {
+  color: #000000;
 }
   .megamenu h3 {
     margin: 0 0 10px; /* Add margin below the heading */
     font-size: 16px; /* Adjust font size */
-    color: #ffffff; /* Set text color */
+    color: #000000; /* Set text color */
   }
   
   .megamenu ul {
@@ -34,13 +47,15 @@
   
   .megamenu ul li {
     margin-bottom: 5px; /* Add margin between menu items */
-    color: white;
+    color: rgb(0, 0, 0);
+    border: 1px solid black;
+    height: 300px;
   }
   
   .megamenu ul li a {
     display: block; /* Make menu items block-level for easy styling */
     padding: 8px 0; /* Add padding to menu items */
-    color: #ffffff; /* Set text color */
+    color: #000000; /* Set text color */
     text-decoration: none; /* Remove default underline */
     transition: color 0.3s ease; /* Add transition for smooth hover effect */
   }
@@ -48,3 +63,16 @@
   .megamenu ul li a:hover {
     color: #ee2323; /* Change text color on hover */
   }
+  .menu-item-inner {
+    text-align: center;
+    border: 1px solid #000000; /* Add border to each menu item */
+    padding: 10px; /* Add padding to space out the content */
+  }
+  
+  .menu-item-inner img {
+    width: 100px; /* Adjust the width as needed */
+    height: 100px; /* Adjust the height as needed */
+    border-radius: 50%; /* Make the image round */
+    margin-bottom: 10px; /* Add some space between the image and text */
+  }
+  
