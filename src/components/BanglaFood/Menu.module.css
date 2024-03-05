@@ -1,222 +1,126 @@
-/* Menu.module.css */
-
-.foodCard {
-  margin: 0 10px 20px 0; /* Adjust margin between cards */
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  overflow: hidden;
-  position: relative; /* Add position relative */
-  height: 300px; 
-  background-color: #d8d6d6;
-}
-
-.foodImage {
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  margin: auto; /* Center the image horizontally */
-}
-
-.cardButtons {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  background-color: #f9f9f9;
-}
-
-.cardButton {
-  padding: 5px 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.cardButton:hover {
-  background-color: #ddd;
-}
-
-.cart {
-  margin-top: 20px;
-}
-
-.cart h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.cart ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.cart li {
-  margin-bottom: 5px;
-}
-
-
 .container {
-  display: flex;
-  justify-content: space-between; /* Align items to start and end */
-  padding: 20px; /* Add padding to the container */
+  padding: 20px;
 }
 
 .foodItems {
-  width: 100%;
   display: flex;
-  flex-wrap: wrap; /* Allow food items to wrap to the next line */
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
+.foodCard {
+  position: relative;
+  width: calc(33.33% - 20px);
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease; /* Add transition for smooth effect */
+}
+.foodCard:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Add box shadow on hover */
+}
 
-
-.cardButtons {
-  display: none;
+.foodImage {
+  width: 100%;
+  height: auto;
+}
+.imageOverlay {
   position: absolute;
-  bottom: 0; /* Align buttons to the bottom of the card */
-  width: 100%; /* Make buttons container full width */
-  padding: 10px;
-  background-color: transparent;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Black transparent color */
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease; /* Add transition for smooth effect */
+}
+.foodCard:hover .imageOverlay {
+  opacity: 0.5; /* Show overlay on hover */
 }
 
-.foodCard:hover .cardButtons {
-  display: flex; /* Show buttons on hover */
-  justify-content: space-between; /* Distribute buttons evenly */
+.details {
+  padding: 15px;
 }
 
-.cardButton {
-  padding: 5px 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.cardButton:hover {
-  background-color: #ddd;
-}
-.cardContent {
-  padding: 10px;
-}
-
-.foodInfo {
-  text-align: center; /* Center align name and price */
-}
-
-.foodInfo h3 {
-  margin: 5px 0;
-}
-
-.foodInfo p {
-  margin: 0;
-}
-.deleteIcon {
-  color: red;
-}
-.cartItem {
+.price {
+  position: absolute;
+  top: 15px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.cartItemInfo {
-  display: flex;
-  flex-direction: column;
-}
-
-.deleteIcon {
-  cursor: pointer;
-}
-
-.totalPrice {
-  margin-top: 20px;
-  font-size: 18px;
-  font-weight: bold;
+  width: calc(100% - 30px);
   color: white;
-  background: red;
-}
-.titleContainer {
-  text-align: center;
-  margin-bottom: 20px; /* Adjust as needed */
-}.overlayIcons {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-around;
-  padding: 10px;
-  visibility: hidden; /* Initially hidden */
 }
 
-/* Show overlayIcons when hovering over foodCard */
-.foodCard:hover .overlayIcons {
+.oldPriceCircle,
+.newPriceCircle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.oldPriceCircle {
+  background-color: #ccc;
+}
+
+.newPriceCircle {
+  background-color: green;
+}
+
+.oldPrice,
+.newPrice {
+  margin: 0;
+  font-weight: bold;
+}
+
+.priceCircle {
+  display: flex;
+  align-items: center;
+}
+
+.icons {
+  position: absolute;
+  top: 50%;
+  right: 15px; /* Position icons to the right side */
+  transform: translateY(-50%); /* Center vertically */
+  visibility: hidden;
+}
+
+.foodCard:hover .icons {
   visibility: visible;
 }
-.overlayIcons {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+
+.iconContainer {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #474444;
   display: flex;
-  justify-content: space-around;
-  padding: 10px;
-  background-color: transparent; /* Semi-transparent background */
-  visibility: hidden; /* Initially hidden */
-}
-
-/* Add styles for individual icons */
-.overlayIcons a {
-  display: inline-block;
-  width: 45px;
-  height: 45px;
-  line-height: 45px;
-  text-align: center;
-  background-color: #f61d1d; /* Gray background color */
-  border-radius: 50%; /* Make the icons round */
-}
-.overlayIcons a {
-  display: inline-block;
-  width: 45px;
-  height: 45px;
-  line-height: 45px;
-  text-align: center;
-  background-color: rgb(255, 255, 255); /* Gray background color */
-  border-radius: 50%; /* Make the icons round */
-	transition: all, 0.3s;
-}
-
-/* Add hover effect */
-.overlayIcons a:hover {
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
   color: white;
-  background-color: rgb(0, 43, 128);
-  transform: rotate(360deg); /* Scale the icon to 110% on hover */
-}
-.cartDropdown {
-  width: 300px; /* Set width of cart summary */
-  padding: 10px; /* Add padding to cart summary */
-  background-color: #f8f9fa; /* Set background color */
-  border: 1px solid #dee2e6; /* Add border */
-  border-radius: 4px; /* Add border radius */
-}
-.cartHeader {
-  font-weight: bold; /* Set font weight for header */
-  color: #343a40; /* Set text color */
-  background-color: #e9ecef; /* Set background color */
-}
-.cartItemContainer {
-  margin-bottom: 10px; /* Add margin bottom to each cart item */
 }
 
-@media (max-width: 1200px) {
-  .foodItems {
-    width: 100%; /* Occupy 100% of the container width for screens smaller than 1200px */
-  }
+.iconContainer:hover {
+  background-color: orange;
+  cursor: pointer;
+}
+.title {
+  text-align: center;
 
+  font-family: "Pacifico", cursive;
+  font-style: normal;
+  font-size: 24px; /* Adjust the font size as needed */
+  font-weight: bold; /* Optionally, make the title bold */
+  color: #333;
+}
+
+@media (max-width: 768px) {
   .foodCard {
-    /* width: calc(25% - 15px); */
-    margin: 0 10px 20px 0; /* Adjust margin between cards */
+    width: calc(90% - 20px); /* Full width for mobile screens */
   }
 }
