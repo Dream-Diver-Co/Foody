@@ -44,91 +44,80 @@ function Cart() {
       <Navbar />
       <div className="cart-container">
         <h2>Shopping Cart</h2>
-        <div className="cart-table">
-          <table>
-            <thead>
-              <tr>
-                <th>Food Number</th>
-                <th>Food Image</th>
-                <th>Food Name</th>
-                <th>Food Price</th>
-                <th>Food Quantity</th>
-                <th>Total Price</th>
-                <th>Action</th>
+        <table className="cart-table">
+          <thead>
+            <tr>
+              <th>Food Number</th>
+              <th>Food Image</th>
+              <th>Food Name</th>
+              <th>Food Price</th>
+              <th>Food Quantity</th>
+              <th>Total Price</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {cartItems.map((item, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td><img src={item.image} alt="Food Image" /></td>
+                <td>{item.name}</td>
+                <td>${item.price.toFixed(2)}</td>
+                <td>
+                  <input 
+                    type="number" 
+                    value={item.quantity} 
+                    min="1" 
+                    onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value))} 
+                  />
+                </td>
+                <td>${(item.price * item.quantity).toFixed(2)}</td>
+                <td><FaTrash className="delete-icon" onClick={() => handleDeleteItem(item.id)} /></td>
               </tr>
-            </thead>
-            <tbody>
-              {cartItems.map((item, index) => (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td><img src={item.image} alt="Food Image" /></td>
-                  <td>{item.name}</td>
-                  <td>${item.price.toFixed(2)}</td>
-                  <td>
-                    <input 
-                      type="number" 
-                      value={item.quantity} 
-                      min="1" 
-                      onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value))} 
-                    />
-                  </td>
-                  <td>${(item.price * item.quantity).toFixed(2)}</td>
-                  <td><FaTrash className="delete-icon" onClick={() => handleDeleteItem(item.id)} /></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
 
-        <div className="suggestions-and-summary">
-          <div className="suggestions">
-            <h2>Suggestions</h2>
-            <div className="suggestions-table">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Food Name</th>
-                    <th>Food Price</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Cold Drink</td>
-                    <td>$2.00</td>
-                    <td><button className="add-btn" onClick={() => handleAddToCart("Cold Drink", 2.00)}>Add</button></td>
-                  </tr>
-                  <tr>
-                    <td>Dessert</td>
-                    <td>$5.00</td>
-                    <td><button className="add-btn" onClick={() => handleAddToCart("Dessert", 5.00)}>Add</button></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div className="summary">
-            <h2>Order Summary</h2>
-            <div className="order-summary-table">
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Sub-total</td>
-                    <td className="sub-total">$25.00</td>
-                  </tr>
-                  <tr>
-                    <td>VAT (7.5%)</td>
-                    <td className="vat">$1.88</td>
-                  </tr>
-                  <tr>
-                    <td>Total</td>
-                    <td className="final-total">$26.88</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
+        <h2>Suggestions</h2>
+        <table className="suggestions-table">
+          <thead>
+            <tr>
+              <th>Food Name</th>
+              <th>Food Price</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cold Drink</td>
+              <td>$2.00</td>
+              <td><button className="add-btn" onClick={() => handleAddToCart("Cold Drink", 2.00)}>Add</button></td>
+            </tr>
+            <tr>
+              <td>Dessert</td>
+              <td>$5.00</td>
+              <td><button className="add-btn" onClick={() => handleAddToCart("Dessert", 5.00)}>Add</button></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Order Summary</h2>
+        <table className="order-summary-table">
+          <tbody>
+            <tr>
+              <td>Sub-total</td>
+              <td className="sub-total">$25.00</td>
+            </tr>
+            <tr>
+              <td>VAT (7.5%)</td>
+              <td className="vat">$1.88</td>
+            </tr>
+            <tr>
+              <td>Total</td>
+              <td className="final-total">$26.88</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <Footer />
     </>

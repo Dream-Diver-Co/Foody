@@ -1,54 +1,152 @@
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
 .cart-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .cart-container h2 {
-    color: orange;
-  }
-  
-  .cart-table {
-    border: 1px solid #ddd;
-    border-radius: 5px;
+  max-width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-container h2 {
+  color: #ff8c00;
+}
+
+.cart-table,
+.suggestions-table,
+.order-summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.cart-table th,
+.cart-table td,
+.suggestions-table th,
+.suggestions-table td,
+.order-summary-table th,
+.order-summary-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-table img {
+  max-width: 100px;
+  height: auto;
+}
+
+.cart-table .quantity-input {
+  width: 50px;
+  text-align: center;
+}
+
+.cart-table .delete-icon {
+  cursor: pointer;
+  color: #ff8c00;
+}
+
+.cart-table .delete-icon:hover {
+  color: #ff0000;
+}
+
+.order-summary-table td {
+  font-weight: bold;
+}
+
+/* Orange theme */
+.cart-container h2,
+.cart-container th,
+.cart-container td {
+  color: #ff8c00;
+}
+
+.cart-container th {
+  text-transform: uppercase;
+}
+
+.cart-container .add-btn,
+.cart-container .delete-icon {
+  background-color: transparent;
+  border: none;
+  color: #ff8c00;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.cart-container .add-btn:hover,
+.cart-container .delete-icon:hover {
+  color: #ff0000;
+}
+
+/* Row and column layout for suggestions and order summary */
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 1;
+  margin-right: 10px;
+}
+.cart-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.cart-container h2 {
+  color: orange;
+}
+
+.cart-table {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.suggestions-and-summary {
+  display: flex;
+  justify-content: space-between;
+}
+
+.suggestions {
+  flex-basis: 48%;
+}
+
+.summary {
+  flex-basis: 48%;
+}
+
+.suggestions-table, .order-summary-table {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+/* Rest of your CSS styles */
+
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .cart-table th,
+  .cart-table td,
+  .suggestions-table th,
+  .suggestions-table td,
+  .order-summary-table th,
+  .order-summary-table td {
     padding: 10px;
-    margin-bottom: 20px;
   }
-  
-  .suggestions-and-summary {
-    display: flex;
-    flex-direction: column;
+
+  .cart-table img {
+    max-width: 80px;
   }
-  
-  .suggestions, .summary {
-    margin-bottom: 20px;
-  }
-  
-  .suggestions-table, .order-summary-table {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 20px;
-  }
-  
-  /* Mobile responsive */
-  @media screen and (max-width: 768px) {
-    .cart-container {
-      padding: 10px;
-    }
-    
-    .suggestions-and-summary {
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-  
-    .suggestions, .summary {
-      flex-basis: 100%;
-    }
-    
-    .suggestions-table, .order-summary-table {
-      width: 100%;
-    }
-  }
-  
+}
