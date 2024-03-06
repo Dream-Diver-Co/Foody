@@ -123,4 +123,7 @@
   .foodCard {
     width: calc(90% - 20px); /* Full width for mobile screens */
   }
+  .foodItems {
+    justify-content: center;
+  }
 }

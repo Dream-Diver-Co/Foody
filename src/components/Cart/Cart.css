@@ -1,56 +1,54 @@
-/* Cart.css */
-
-/* Reset margins and padding for the body */
-body {
-    margin: 0;
-    padding: 0;
-}
-
-/* Set margin and padding to 0 for the table wrapper */
-.cart-table-wrapper {
-    margin: 0;
-    padding: 0;
-}
-
-/* Set width to 100% for the table */
-.cart-table-wrapper table {
-    width: 100%;
-    border-collapse: separate; /* Ensure that borders are separated */
-    border-spacing: 10px; /* Add gap between columns */
-}
-
-/* Increase font size for table headers */
-.cart-table-wrapper th {
-    font-size: 16px;
-}
-
-/* Increase font size for table data */
-.cart-table-wrapper td {
-    font-size: 14px;
-}
-
-/* Increase font size for VAT and total price */
-.cart-summary .vat-total p {
-    font-size: 16px;
-}
-
-/* Increase font size for checkout button */
-.cart-summary .btn-checkout {
-    font-size: 16px;
-}
-
-/* Adjust width of specific table columns */
-.cart-table-wrapper th.product-image-col,
-.cart-table-wrapper td.product-image-col {
-    width: 150px; /* Adjust the width as needed */
-}
-
-.cart-table-wrapper th.product-name-col,
-.cart-table-wrapper td.product-name-col {
-    width: 200px; /* Adjust the width as needed */
-}
-
-.cart-table-wrapper th,
-.cart-table-wrapper td {
-    padding: 10px; /* Add padding to provide space between content and cell borders */
-}
+.cart-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .cart-container h2 {
+    color: orange;
+  }
+  
+  .cart-table {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .suggestions-and-summary {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .suggestions, .summary {
+    margin-bottom: 20px;
+  }
+  
+  .suggestions-table, .order-summary-table {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* Mobile responsive */
+  @media screen and (max-width: 768px) {
+    .cart-container {
+      padding: 10px;
+    }
+    
+    .suggestions-and-summary {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  
+    .suggestions, .summary {
+      flex-basis: 100%;
+    }
+    
+    .suggestions-table, .order-summary-table {
+      width: 100%;
+    }
+  }
+  
