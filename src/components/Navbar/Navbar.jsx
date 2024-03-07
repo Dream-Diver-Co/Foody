@@ -106,22 +106,11 @@ const Navbar = () => {
             />
           )}
         </div>
-        <div
-          className="icon"
-          onClick={() => setShowUserDropdown(!showUserDropdown)}
-        >
-          <FaUser />
-          {showUserDropdown && (
-            <div className="user-dropdown">
-              <ul>
-                <li>
-                  <Link to="/login">Log In</Link>
-                </li>
-                {/* Add other relevant list items */}
-              </ul>
-            </div>
-          )}
-        </div>
+        <div className="icon">
+  <Link to="/login">
+    <FaUser />
+  </Link>
+</div>
       </div>
 
       <div className="app__navbar-smallscreen">

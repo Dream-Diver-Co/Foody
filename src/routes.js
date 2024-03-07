@@ -10,6 +10,7 @@ import Menu from "./components/Menu/Menu";
 import IndianFood from "./components/IndianMenu/Indian-Menu";
 import BanglaFood from "./components/BanglaFood/BanglaFood";
 import Cart from "./components/Cart/Cart";
+import Login from "./components/Login/Login.jsx"
 
 
 
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
     {
         path: "Cart",
         element: <Cart />
+    },
+    {
+        path: "Login",
+        element: <Login />
     }
 ]);
 
