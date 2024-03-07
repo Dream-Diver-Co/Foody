@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Menu.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus, faEye } from "@fortawesome/free-solid-svg-icons";
@@ -8,6 +8,13 @@ import food3 from "../../assets/Food_Image/food3.jpg";
 import food4 from "../../assets/Food_Image/food4.jpeg";
 
 function Menu() {
+  const [cart, setCart] = useState([]);
+
+  // Function to add item to the cart
+  const addToCart = (foodItem) => {
+    setCart([...cart, foodItem]);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.foodItems}>
@@ -17,6 +24,12 @@ function Menu() {
           oldPrice={10}
           newPrice={8}
           ingredients="Rice, Chicken, Vegetables"
+          addToCart={() =>
+            addToCart({
+              title: "Delicious Food 1",
+              price: 8
+            })
+          }
         />
         <FoodCard
           image={food2}
@@ -24,6 +37,12 @@ function Menu() {
           oldPrice={15}
           newPrice={12}
           ingredients="Rice, Chicken, Vegetables"
+          addToCart={() =>
+            addToCart({
+              title: "Delicious Food 2",
+              price: 12
+            })
+          }
         />
         <FoodCard
           image={food3}
@@ -31,6 +50,12 @@ function Menu() {
           oldPrice={20}
           newPrice={18}
           ingredients="Rice, Chicken, Vegetables"
+          addToCart={() =>
+            addToCart({
+              title: "Delicious Food 3",
+              price: 18
+            })
+          }
         />
         <FoodCard
           image={food4}
@@ -38,13 +63,19 @@ function Menu() {
           oldPrice={20}
           newPrice={18}
           ingredients="Rice, Chicken, Vegetables"
+          addToCart={() =>
+            addToCart({
+              title: "Delicious Food 4",
+              price: 18
+            })
+          }
         />
       </div>
     </div>
   );
 }
 
-function FoodCard({ image, title, oldPrice, newPrice, ingredients }) {
+function FoodCard({ image, title, oldPrice, newPrice, ingredients, addToCart }) {
   return (
     <div className={styles.foodCard}>
       <img src={image} alt="Food" className={styles.foodImage} />
@@ -62,7 +93,7 @@ function FoodCard({ image, title, oldPrice, newPrice, ingredients }) {
           <span>Main Ingredients: {ingredients}</span>
         </div>
         <div className={styles.icons}>
-          <div className={styles.iconContainer}>
+          <div className={styles.iconContainer} onClick={addToCart}>
             <FontAwesomeIcon icon={faCartPlus} className={styles.icon} />
           </div>
           <div className={styles.iconContainer}>
@@ -73,6 +104,5 @@ function FoodCard({ image, title, oldPrice, newPrice, ingredients }) {
     </div>
   );
 }
-
 
 export default Menu;
